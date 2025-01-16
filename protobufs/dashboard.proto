@@ -3,7 +3,7 @@ syntax = "proto3";
 package dashboard;
 
 service Dashboard {
-  rpc GetSignedInUser () returns (GetSignedInUserResponse)
+  rpc GetSignedInUser () returns (GetSignedInUserResponse);
 }
 
 
