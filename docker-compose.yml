@@ -1,0 +1,5 @@
+services:
+  proxy:
+    image: envoyproxy/envoy:v1.33-latest
+    volumes:
+      - ./proxy/envoy.yaml:/etc/envoy/envoy.yaml:ro
