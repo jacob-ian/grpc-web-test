@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package dashboard;
+
+service Dashboard {
+  rpc GetSignedInUser () returns (GetSignedInUserResponse)
+}
+
+
+message User {
+  string id = 1;
+  string first_name = 2;
+}
+
+message GetSignedInUserResponse {
+  User user = 1;
+}
