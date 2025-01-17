@@ -11,7 +11,7 @@ function App() {
   const [greeting, setGreeting] = useState<Greeting | undefined>(undefined);
 
   const transport = new GrpcWebFetchTransport({
-    baseUrl: "http://localhost:8080",
+    baseUrl: "http://localhost:8070",
     format: 'binary'
   });
   const client = new DashboardClient(transport);
