@@ -1,10 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { DashboardClient } from './protos/dashboard.client'
+import { GrpcWebFetchTransport } from '@protobuf-ts/grpcweb-transport'
+import { Greeting } from './protos/dashboard'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [greeting, setGreeting] = useState<Greeting | undefined>(undefined);
+
+  const transport = new GrpcWebFetchTransport({
+    baseUrl: "http://localhost:8080",
+    format: 'binary'
+  });
+  const client = new DashboardClient(transport);
+
+  useEffect(() => {
+    client.getGreeting({}).then(({ response }) => {
+      setGreeting(response.greeting);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
+
 
   return (
     <>
@@ -28,6 +47,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      {greeting && (
+        <div>
+          <pre>{greeting.id}</pre>
+          <p>{greeting.message}</p>
+        </div>
+      )}
     </>
   )
 }

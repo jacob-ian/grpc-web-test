@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 	"jacobmatthe.ws/grpc-web-test/protos/dashboard"
 )
 
@@ -32,6 +33,7 @@ func main() {
 
 	s := grpc.NewServer()
 	dashboard.RegisterDashboardServer(s, service)
+	reflection.Register(s)
 
 	println("listening")
 
