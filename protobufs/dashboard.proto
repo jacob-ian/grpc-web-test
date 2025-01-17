@@ -3,15 +3,19 @@ syntax = "proto3";
 package dashboard;
 
 service Dashboard {
-  rpc GetSignedInUser () returns (GetSignedInUserResponse);
+  rpc GetGreeting(GetGreetingRequest) returns (GetGreetingResponse);
 }
 
-
-message User {
+message Greeting {
   string id = 1;
-  string first_name = 2;
+  string message = 2;
 }
 
-message GetSignedInUserResponse {
-  User user = 1;
+
+message GetGreetingRequest {
+
+}
+
+message GetGreetingResponse {
+  Greeting greeting = 1;
 }
