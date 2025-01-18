@@ -16,9 +16,9 @@ services:
     ports:
       - "9090:9090"
       - "9091:9091"
-  frontend:
-    build:
-      context: .
-      dockerfile: ./client/Dockerfile
-    ports:
-      - "5173:5173"
+  #frontend:
+  #  build:
+  #    context: .
+  #    dockerfile: ./client/Dockerfile
+  #  ports:
+  #    - "5173:5173"

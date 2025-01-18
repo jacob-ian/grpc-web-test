@@ -98,6 +98,7 @@ static_resources:
     - name: grpc_server
       connect_timeout: 0.25s
       type: logical_dns
+      dns_lookup_family: V4_ONLY
       typed_extension_protocol_options:
         envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
           "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
@@ -117,6 +118,7 @@ static_resources:
       connect_timeout: 0.25s
       type: logical_dns
       lb_policy: ROUND_ROBIN
+      dns_lookup_family: V4_ONLY
       load_assignment:
         cluster_name: http_server
         endpoints:
@@ -129,6 +131,7 @@ static_resources:
     - name: default_http_server
       connect_timeout: 0.25s
       type: logical_dns
+      dns_lookup_family: V4_ONLY
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: http_server
@@ -137,6 +140,6 @@ static_resources:
             - endpoint:
                 address:
                   socket_address:
-                    address: frontend
+                    address: host.docker.internal
                     port_value: 5173     
 
